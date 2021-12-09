@@ -32,5 +32,3 @@ For($y=0;$y -lt $Height.Count;$y++){ # Get y axis location
 } #Y for
 
 $risk # output / Answer
-
-# C:\Users\hansardr\OneDrive - Verplank Enterprises, Inc\hansardr Profile\Documents\Advent of Code - 2021\Day 9
