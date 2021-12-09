@@ -1,4 +1,4 @@
-﻿$Height = Get-Content -Path "$PSScriptRoot\D9_Input.txt"
+$Height = Get-Content -Path "$PSScriptRoot\D9_Input.txt"
 [int]$Risk = 0
 
 <#
@@ -15,15 +15,23 @@ For($y=0;$y -lt $Height.Count;$y++){ # Get y axis location
     $loc = $Height[$y][$x] # Get Current Location using y & x
     # Get postions around current location if possible to then later compare
     $Up = If($y -gt "0") {$Height[$y - 1][$x]}
-    $Down = If($y -lt $Height.Count) {$Height[$y + 1][$x]}
+    $Down = If($y -lt $Height.Count - 1) {$Height[$y + 1][$x]}
     $Left = If($x -gt "0") {$Height[$y][$x - 1]}
-    $Right = If($x -lt $Height.Length) {$Height[$y][$x + 1]}
+    $Right = If($x -lt $Height.Length - 1) {$Height[$y][$x + 1]}
 
-        If(($Up -ne $null) -or ($Up -lt $Loc)){
-            If(($Down -ne $null) -or ($Down -lt $loc)){
-                If(($Left -ne $null) -or ($left -lt $loc)){
-                    If(($Right -ne $nul) -or ($Right -lt $Loc)){
-                        $Risk += ($loc + 1)
+    #Write-Output " $up"
+    #Write-Output "$left$Loc$right" USED FOR LOCATION VERIFICATION
+    #Write-Output " $down"
+
+        If(($Up -eq $null) -or ($Up -gt $Loc)){
+            #Write-Output "Passed Up"
+            If(($Down -eq $null) -or ($Down -gt $loc)){
+                #Write-Output "Passed Down"
+                If(($Left -eq $null) -or ($left -gt $loc)){
+                    #Write-Output "Passed Left"
+                    If(($Right -eq $nul) -or ($Right -gt $Loc)){
+                        #Write-Output "Passed Right"
+                        $Risk += [int]::Parse($loc) +1
                     } # Right If
                 }# Left If
             } # Down If
