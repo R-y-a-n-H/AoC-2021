@@ -1,4 +1,4 @@
-﻿$data = Get-Content -Path "C:\Users\hansardr\OneDrive - Verplank Enterprises, Inc\hansardr Profile\Documents\Advent of Code - 2021\Day 8\Input.txt" | ForEach-Object {$_.Split("|")[1].trim(" ")}
+﻿$data = Get-Content -Path "$PSScriptRoot\Input.txt" | ForEach-Object {$_.Split("|")[1].trim(" ")}
 [int]$count = "0"
 
 Foreach ($ReadOut in $Data){
